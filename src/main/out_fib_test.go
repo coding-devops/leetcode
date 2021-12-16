@@ -86,4 +86,5 @@ func Test_sectionArray(t *testing.T) {
 
 	ar_sec2 := arr3[:]
 	t.Log(ar_sec2)
+
 }
