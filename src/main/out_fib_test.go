@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"testing"
+	"unsafe"
 )
 
 //输出前n位fib
@@ -149,3 +151,57 @@ func TestSliceInit(t *testing.T) {
 	a = append(a, 3)
 	t.Log(a, len(a), cap(a))
 }
+
+//可变长参数
+
+func Test_arg(t *testing.T) {
+	Sum_arg(1, 2, 3, 4)
+}
+func Sum_arg(ok ...int) {
+
+	for _, v := range ok {
+		fmt.Println(v)
+	}
+}
+
+//延迟执行
+func Test_defer(t *testing.T) {
+	defer func() {
+		t.Log("Sssss")
+	}()
+
+	t.Log("1")
+}
+
+type Employee struct {
+}
+
+type First_Object struct {
+	id             string
+	age            string
+	String_pointer func() string
+}
+
+func Test_object(t *testing.T) {
+
+	e := First_Object{"1", "2", func() string {
+		return "method in struct"
+	}}
+
+	t.Logf("e 的内存地址: %x", unsafe.Pointer(&e.age))
+	t.Log(e.String_pointer())
+	//t.Log("*********************")
+	//e.String_value()
+
+}
+
+// pointer
+//func (test_struct First_Object) String_pointer() string {
+//	fmt.Printf("test_struct pointer 的内存地址: %x\n", unsafe.Pointer(&test_struct.age))
+//	return "pointer is running"
+//}
+
+//func (test_struct First_Object) String_value() string {
+//	fmt.Printf("test_struct value 的内存地址: %x\n", unsafe.Pointer(&test_struct))
+//	return "value is running"
+//}
