@@ -59,7 +59,7 @@ type Programer interface {
 type Goprogramer struct {
 }
 
-func (g *Goprogramer) WriteResponseTest() string {
+func (g Goprogramer) WriteResponseTest() string {
 	fmt.Println("123123")
 	return "12123"
 }
