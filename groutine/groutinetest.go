@@ -1,0 +1,5 @@
+package groutine
+
+func test() {
+
+}

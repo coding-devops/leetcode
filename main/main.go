@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type A struct {
 }
@@ -15,11 +18,11 @@ func (a *A) ptShow() {
 
 type B struct {
 	a int
-	A
+	A //结构
 }
 
 type C struct {
-	*A //这种定义的方式情况下，通过C 创建的对象 就只能访问建立在*A的 方法上了 比如 ptShow
+	*A // 结构的引用 这种定义的方式情况下，通过C （外部对象）创建的对象 就只能访问建立在*A的 方法上了 比如 ptShow
 }
 
 //func main() {
@@ -63,10 +66,54 @@ func (g Goprogramer) WriteResponseTest() string {
 	fmt.Println("123123")
 	return "12123"
 }
+
+//func main() {
+//
+//	var p Programer = new(Goprogramer)
+//
+//	p.WriteResponseTest()
+//
+//}
+
+//go语言对象在内存中的分配 猜测
+
+type object struct {
+	sex int
+	age int
+}
+
+type test struct {
+	object
+}
+
+//func main() {
+//	o := object{1, 2}
+//
+//	fmt.Printf("object type : %x", &o.age)
+//	test_obj := test{o}
+//	//值发生了复制
+//	fmt.Printf("test_object type : %x", &test_obj.age)
+//
+//}
+
 func main() {
+	for index, v := range os.Args {
+		fmt.Println(index, v)
+	}
+}
 
-	var p Programer = new(Goprogramer)
+type Phone struct {
+	UserName string
+}
 
-	p.WriteResponseTest()
+func NewPhone(userName string) Phone {
+	return Phone{UserName: userName}
+}
 
+func (p *Phone) Call() {
+	fmt.Println(p.UserName, " Call...")
+}
+
+type PhoneFeatures interface {
+	Call()
 }
