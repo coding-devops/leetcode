@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 type A struct {
@@ -60,20 +59,18 @@ type Programer interface {
 }
 
 type Goprogramer struct {
+	Programer
 }
 
-func (g Goprogramer) WriteResponseTest() string {
-	fmt.Println("123123")
-	return "12123"
+func (gop *Goprogramer) WriteResponseTest() string {
+	return "sss"
 }
+func main() {
 
-//func main() {
-//
-//	var p Programer = new(Goprogramer)
-//
-//	p.WriteResponseTest()
-//
-//}
+	var p Programer = new(Goprogramer)
+	fmt.Println(p.WriteResponseTest())
+
+}
 
 //go语言对象在内存中的分配 猜测
 
@@ -96,11 +93,11 @@ type test struct {
 //
 //}
 
-func main() {
-	for index, v := range os.Args {
-		fmt.Println(index, v)
-	}
-}
+//func main() {
+//	for index, v := range os.Args {
+//		fmt.Println(index, v)
+//	}
+//}
 
 type Phone struct {
 	UserName string
