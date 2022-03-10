@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
 // 双指针法（滑动窗口）判断  长度最小的子数组
 // leetcode ：209
-func main() {
-	ints := []int{2, 3, 1, 2, 4, 7}
-	fmt.Println(move_window(ints, 7))
-}
+//func main() {
+//	ints := []int{2, 3, 1, 2, 4, 7}
+//	fmt.Println(move_window(ints, 7))
+//}
 
 func move_window(nums []int, a int) int {
 
