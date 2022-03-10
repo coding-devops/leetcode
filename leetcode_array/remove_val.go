@@ -9,7 +9,7 @@ package main
 //	//fmt.Println(remove_val(ints, 3))
 //}
 
-// leetcode ： 27
+// leetcode_array ： 27
 func remove_val(nums []int, target int) int {
 	slowindex := 0
 	for fastindex := 0; fastindex < len(nums); fastindex++ {
@@ -21,7 +21,7 @@ func remove_val(nums []int, target int) int {
 	return slowindex
 }
 
-//leetcode ：26 删除重复元素 返回结果数组长度
+//leetcode_array ：26 删除重复元素 返回结果数组长度
 func remove_same_val(nums []int) int {
 
 	slowindex := 0

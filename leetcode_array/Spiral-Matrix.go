@@ -5,7 +5,7 @@ import (
 )
 
 // 输出螺旋矩阵
-// leetcode ： 59
+// leetcode_array ： 59
 //func main() {
 //	v := Spiral_Matrix(3)
 //	for i := 0; i < len(v); i++ {
@@ -58,7 +58,7 @@ func Spiral_Matrix(n int) [][]int {
 	return arr
 }
 
-// 给定一个螺旋矩阵 并非正方形，按顺时针输出
+// 给定一个螺旋矩阵 并非正方形，按顺时针输出 leetcode_array:54
 func main() {
 	twoarr := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}
 	arr := print_SM(twoarr)
