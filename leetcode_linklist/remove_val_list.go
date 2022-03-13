@@ -1,31 +1,27 @@
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	n1 := &Node{}
-	n1.val = 1
-
-	n2 := &Node{}
-	n2.val = 2
-
-	n3 := &Node{}
-	n3.val = 3
-
-	n4 := &Node{}
-	n4.val = 2
-
-	n1.Next = n2
-	n2.Next = n3
-	n3.Next = n4
-	n4.Next = nil
-	head := non_v_head(n1, 2)
-	fmt.Println(head.val)
-	fmt.Println(head.Next.val)
-	//linklist(n1, 2)
-}
+//func main() {
+//	n1 := &Node{}
+//	n1.val = 1
+//
+//	n2 := &Node{}
+//	n2.val = 2
+//
+//	n3 := &Node{}
+//	n3.val = 3
+//
+//	n4 := &Node{}
+//	n4.val = 2
+//
+//	n1.Next = n2
+//	n2.Next = n3
+//	n3.Next = n4
+//	n4.Next = nil
+//	head := non_v_head(n1, 2)
+//	fmt.Println(head.val)
+//	fmt.Println(head.Next.val)
+//	//linklist(n1, 2)
+//}
 
 //单向链表
 type Node struct {
