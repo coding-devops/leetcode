@@ -1,15 +1,13 @@
 package main
 
-import "fmt"
-
 //设计一个单链表存储
-func main() {
-	a := InitMyLinkList()
-	a.addAtIndex(0, 10)
-	a.addAtIndex(0, 20)
-	a.addAtIndex(1, 30)
-	fmt.Println(a.Get(0))
-}
+//func main() {
+//	a := InitMyLinkList()
+//	a.addAtIndex(0, 10)
+//	a.addAtIndex(0, 20)
+//	a.addAtIndex(1, 30)
+//	fmt.Println(a.Get(0))
+//}
 
 type MyLinkedList struct {
 	cell *node
