@@ -36,15 +36,13 @@ func switchtwo(head *listNode) *listNode {
 	dum := &listNode{}
 	dum.next = head
 	pre := dum
-	move := head
-	// 1、当前需要交换的两个数字中的第一个数字的下一个节点不为空   2、当前需要交换的两个数字中的第一个数字不为空
-	for move != nil && move.next != nil {
-		pre.next = move.next
-		tmp := move.next.next
-		pre.next.next = move
-		move.next = tmp
-		pre = move
-		move = tmp
+	for head != nil && head.next != nil {
+		pre.next = head.next
+		tmp := head.next.next
+		pre.next.next = head
+		head.next = tmp
+		pre = head
+		head = tmp
 	}
 	return dum.next
 }
