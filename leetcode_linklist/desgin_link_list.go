@@ -9,14 +9,6 @@ package main
 //	fmt.Println(a.Get(0))
 //}
 
-type MyLinkedList struct {
-	cell *node
-}
-type node struct {
-	Val  int
-	Next *node
-}
-
 func InitMyLinkList() MyLinkedList {
 	return MyLinkedList{}
 }
@@ -40,7 +32,7 @@ func (this *MyLinkedList) Get(index int) int {
 
 // 头插法
 func (this *MyLinkedList) AddAtHead(val int) {
-	head := &node{}
+	head := &Node{}
 	head.Val = val
 	head.Next = this.cell
 	this.cell = head
@@ -48,7 +40,7 @@ func (this *MyLinkedList) AddAtHead(val int) {
 
 // 尾插法
 func (this *MyLinkedList) AddAtTail(val int) {
-	tmp := &node{}
+	tmp := &Node{}
 	tmp = this.cell
 	if tmp == nil {
 		this.AddAtHead(val)
@@ -57,7 +49,7 @@ func (this *MyLinkedList) AddAtTail(val int) {
 	for tmp.Next != nil {
 		tmp = tmp.Next
 	}
-	tailnode := &node{}
+	tailnode := &Node{}
 	tailnode.Val = val
 	tmp.Next = tailnode
 }
@@ -65,7 +57,7 @@ func (this *MyLinkedList) AddAtTail(val int) {
 // 插到 index 前
 func (this *MyLinkedList) addAtIndex(index int, val int) {
 	nodemiddle := this.cell
-	insertNode := &node{
+	insertNode := &Node{
 		Val: val,
 	}
 	if index <= 0 {
@@ -102,7 +94,7 @@ func (this *MyLinkedList) deleteLinkList_node(index int) {
 		this.cell = nil
 		return
 	}
-	tmp := &node{}
+	tmp := &Node{}
 	tmp.Next = this.cell
 	move := tmp
 	for move.Next != nil {

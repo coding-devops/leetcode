@@ -23,19 +23,13 @@ package main
 //	//linklist(n1, 2)
 //}
 
-//单向链表
-type Node struct {
-	val  int
-	Next *Node
-}
-
 //1->4->3->2->4 // 虚拟头节点写法
 func linklist(head *Node, val int) *Node {
 	tmp := &Node{}
 	tmp.Next = head
 	move := tmp
 	for move.Next != nil {
-		if move.Next.val == val {
+		if move.Next.Val == val {
 			move.Next = move.Next.Next
 		} else {
 			move = move.Next
@@ -51,14 +45,14 @@ func non_v_head(head *Node, val int) *Node {
 	if head == nil {
 		return nil
 	}
-	for head != nil && head.val == val {
+	for head != nil && head.Val == val {
 		head = head.Next
 
 	}
 	tmp := &Node{}
 	tmp.Next = head
 	for tmp.Next != nil {
-		if tmp.Next.val == val {
+		if tmp.Next.Val == val {
 			tmp.Next = tmp.Next.Next
 		} else {
 			tmp = tmp.Next
