@@ -6,17 +6,18 @@ package main
 //	fmt.Println(binary(ints, 13))
 //}
 
-func binary(ints []int, a int) int {
-	low, high := 0, len(ints)
+func binary(nums []int, target int) int {
+	low, high := 0, len(nums)-1
+	tmp := -1
 	for low < high {
-		mid := (low + high) / 2
-		if ints[mid] == a {
-			return mid
-		} else if ints[mid] > a {
-			high = mid - 1
+		middle := (low + high + 1) / 2
+		if target > nums[middle] {
+			low = middle
+		} else if target < nums[middle] {
+			high = middle - 1
 		} else {
-			low = mid + 1
+			return middle
 		}
 	}
-	return -1
+	return tmp
 }

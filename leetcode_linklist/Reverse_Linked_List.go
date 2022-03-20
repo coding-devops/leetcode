@@ -1,28 +1,36 @@
 package main
 
+//func main() {
+//
+//	d := &Node{}
+//	d.Val = 123123
+//	c := &Node{}
+//	c.Val = 3
+//	b := &Node{}
+//	b.Val = 2
+//	a := &Node{}
+//	a.Val = 1
+//	a.Next = b
+//	b.Next = c
+//	c.Next = d
+//	d.Next = nil
+//
+//	new_head := reverse_linked_list(a)
+//	fmt.Println(new_head.Val)
+//
+//}
+
 //  反转链表
 func reverse_linked_list(head *Node) *Node {
-	pre := &Node{}
-	cur := &Node{}
-	pre.Next = nil
-	cur.Next = head
-	//for cur.next != nil {
-	//	tmp := cur.next
-	//	cur.next = cur.next.next
-	//	tmp.next = pre.next
-	//	pre.next = tmp
-	//}
-	method2(pre, cur)
-	return pre.Next
-}
-
-func method2(pre *Node, cur *Node) {
-	if cur.Next == nil {
-		return
+	vhead := &Node{
+		Next: nil,
 	}
-	tmp := cur.Next
-	cur.Next = cur.Next.Next
-	tmp.Next = pre.Next
-	pre.Next = tmp
-	method2(pre, cur)
+	move := head
+	for move != nil {
+		tmp := move.Next
+		move.Next = vhead.Next
+		vhead.Next = move
+		move = tmp
+	}
+	return vhead.Next
 }

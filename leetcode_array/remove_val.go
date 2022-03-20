@@ -21,7 +21,7 @@ func remove_val(nums []int, target int) int {
 	return slowindex
 }
 
-//leetcode_array ：26 删除重复元素 返回结果数组长度
+//leetcode_array ：26 删除重复元素 返回结果数组长度  ，数组已按照顺序排列好 比如 1，1，2，3，4，5，5，6，6，7
 func remove_same_val(nums []int) int {
 
 	slowindex := 0

@@ -36,7 +36,7 @@ package main
 //
 
 //func main() {
-//	ints := []int{18, 27, 10, 11, 17, 23, 123, 1343, 123, 123213, 0, -1, -1212, -500}
+//	ints := []int{7, 2, 3, 4, 5, 6}
 //	quick_sort_for_number(ints, 0, len(ints)-1) // 0，5
 //	for _, v := range ints {
 //		fmt.Println(v)
@@ -48,19 +48,15 @@ package main
 // 分治策略 的快速排序 排序数字
 func quick_sort_for_number(ints []int, low int, high int) {
 	i, j := low, high
-	if i >= j { //递归的结束标识
+
+	if i >= j {
 		return
 	}
-	tmp := ints[i]
-	for {
-		if i >= j {
-			break
-		}
-		for {
-			if i >= j {
-				break
-			}
-			if ints[j] < tmp {
+	a := ints[i]
+
+	for i < j {
+		for i < j {
+			if ints[j] < a {
 				ints[i] = ints[j]
 				i++
 				break
@@ -68,12 +64,8 @@ func quick_sort_for_number(ints []int, low int, high int) {
 				j--
 			}
 		}
-
-		for {
-			if i >= j {
-				break
-			}
-			if ints[i] > tmp {
+		for i < j {
+			if ints[i] > a {
 				ints[j] = ints[i]
 				j--
 				break
@@ -81,9 +73,8 @@ func quick_sort_for_number(ints []int, low int, high int) {
 				i++
 			}
 		}
+		ints[i] = a
 	}
-	ints[i] = tmp
-
 	quick_sort_for_number(ints, low, i-1)
 	quick_sort_for_number(ints, i+1, high)
 }
