@@ -65,12 +65,13 @@ type Goprogramer struct {
 func (gop *Goprogramer) WriteResponseTest() string {
 	return "sss"
 }
-func main() {
 
-	var p Programer = new(Goprogramer)
-	fmt.Println(p.WriteResponseTest())
-
-}
+//func main() {
+//
+//	var p Programer = new(Goprogramer)
+//	fmt.Println(p.WriteResponseTest())
+//
+//}
 
 //go语言对象在内存中的分配 猜测
 

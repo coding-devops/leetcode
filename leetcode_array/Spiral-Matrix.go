@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // 输出螺旋矩阵
 // leetcode_array ： 59
 //func main() {
@@ -60,13 +58,13 @@ func Spiral_Matrix(n int) [][]int {
 }
 
 // 给定一个螺旋矩阵 并非正方形，按顺时针输出 leetcode_array:54
-func main() {
-	twoarr := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {9, 10, 11, 12}}
-	arr := print_SM(twoarr)
-	for _, v := range arr {
-		fmt.Println(v)
-	}
-}
+//func main() {
+//	twoarr := [][]int{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {9, 10, 11, 12}}
+//	arr := print_SM(twoarr)
+//	for _, v := range arr {
+//		fmt.Println(v)
+//	}
+//}
 
 func print_SM(matrix [][]int) []int {
 	left := 0

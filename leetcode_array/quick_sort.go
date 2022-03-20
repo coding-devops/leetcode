@@ -48,15 +48,13 @@ package main
 // 分治策略 的快速排序 排序数字
 func quick_sort_for_number(ints []int, low int, high int) {
 	i, j := low, high
-
 	if i >= j {
 		return
 	}
-	a := ints[i]
-
+	tmp := ints[i]
 	for i < j {
 		for i < j {
-			if ints[j] < a {
+			if ints[j] < tmp {
 				ints[i] = ints[j]
 				i++
 				break
@@ -65,7 +63,7 @@ func quick_sort_for_number(ints []int, low int, high int) {
 			}
 		}
 		for i < j {
-			if ints[i] > a {
+			if ints[i] > tmp {
 				ints[j] = ints[i]
 				j--
 				break
@@ -73,8 +71,8 @@ func quick_sort_for_number(ints []int, low int, high int) {
 				i++
 			}
 		}
-		ints[i] = a
 	}
+	ints[i] = tmp
 	quick_sort_for_number(ints, low, i-1)
 	quick_sort_for_number(ints, i+1, high)
 }
