@@ -1,117 +1,57 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"runtime"
+	"strconv"
+	"sync"
 )
 
-type A struct {
+var mgroup = make(map[uint64]int)
+var mutex sync.Mutex
+
+func Trace() func() {
+
+	pc, _, _, ok := runtime.Caller(1)
+	if !ok {
+		fmt.Println("报错")
+	}
+	funcccc := runtime.FuncForPC(pc)
+	funname := funcccc.Name()
+	gid := curGoroutineID()
+
+	mutex.Lock()
+	index := mgroup[gid]
+	mgroup[gid] = index + 1
+	mutex.Unlock()
+	s := ""
+	for i := 0; i <= index; i++ {
+		s = s + "    "
+	}
+	fmt.Printf("g[%05d]:%s-> enter:%s\n", gid, s, funname)
+	return func() {
+		fmt.Printf("g[%05d]:%s<- exit :%s\n", gid, s, funname)
+	}
 }
 
-func (a A) show() {
-	fmt.Println("A call by show()")
-}
+// trace2/trace.go
+var goroutineSpace = []byte("goroutine ")
 
-func (a *A) ptShow() {
-	fmt.Println("A call by ptShow()")
-}
-
-type B struct {
-	a int
-	A //结构
-}
-
-type C struct {
-	*A // 结构的引用 这种定义的方式情况下，通过C （外部对象）创建的对象 就只能访问建立在*A的 方法上了 比如 ptShow
-}
-
-//func main() {
-//	//这段执行没毛病
-//	fmt.Println("test a,pa show:")
-//	//a, pa := A{}, new(A)
-//	//a.show()
-//	//a.ptShow()
-//	//pa.show()
-//	//pa.ptShow()
-//	//fmt.Printf("type of a(%T), pa(%T)\n", a, pa)
-//	//这段执行没毛病
-//
-//	//结构内嵌套 "结构"  也没毛病
-//	//b, bp := B{}, new(B)
-//	//b.show()
-//	//b.ptShow()
-//	//
-//	//bp.show()
-//	//bp.ptShow()
-//	//结构内嵌套 "结构"  也没毛病
-//
-//	//结构内嵌套 "结构引用" 时 只能访问 建立在结构引用上的方法 比如：ptShow()
-//	c := C{}
-//	//c.show()
-//	c.ptShow()
-//	//
-//	//cp.show()
-//	//cp.ptShow()
-//
-//}
-
-type Programer interface {
-	WriteResponseTest() string
-}
-
-type Goprogramer struct {
-	Programer
-}
-
-func (gop *Goprogramer) WriteResponseTest() string {
-	return "sss"
-}
-
-//func main() {
-//
-//	var p Programer = new(Goprogramer)
-//	fmt.Println(p.WriteResponseTest())
-//
-//}
-
-//go语言对象在内存中的分配 猜测
-
-type object struct {
-	sex int
-	age int
-}
-
-type test struct {
-	object
-}
-
-//func main() {
-//	o := object{1, 2}
-//
-//	fmt.Printf("object type : %x", &o.age)
-//	test_obj := test{o}
-//	//值发生了复制
-//	fmt.Printf("test_object type : %x", &test_obj.age)
-//
-//}
-
-//func main() {
-//	for index, v := range os.Args {
-//		fmt.Println(index, v)
-//	}
-//}
-
-type Phone struct {
-	UserName string
-}
-
-func NewPhone(userName string) Phone {
-	return Phone{UserName: userName}
-}
-
-func (p *Phone) Call() {
-	fmt.Println(p.UserName, " Call...")
-}
-
-type PhoneFeatures interface {
-	Call()
+// 获取当前goroutine id
+func curGoroutineID() uint64 {
+	b := make([]byte, 64)
+	b = b[:runtime.Stack(b, false)]
+	// Parse the 4707 out of "goroutine 4707 ["
+	b = bytes.TrimPrefix(b, goroutineSpace)
+	i := bytes.IndexByte(b, ' ')
+	if i < 0 {
+		panic(fmt.Sprintf("No space found in %q", b))
+	}
+	b = b[:i]
+	n, err := strconv.ParseUint(string(b), 10, 64)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to parse goroutine ID out of %q: %v", b, err))
+	}
+	return n
 }

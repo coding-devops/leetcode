@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+)
+
 // 找出n个字符串中相同的两个字符串
 // 暴力解法
 // O(n^2)
@@ -35,17 +39,14 @@ package main
 // O（nlogn）
 //
 
-//func main() {
-//	ints := []int{7, 2, 3, 4, 5, 6}
-//	quick_sort_for_number(ints, 0, len(ints)-1) // 0，5
-//	for _, v := range ints {
-//		fmt.Println(v)
-//	}
-//}
+func main() {
+	ints := []int{7, 212312, 32, 4, 5, 6}
+	quick_sort_for_number(ints, 0, len(ints)-1) // 0，5
+	for _, v := range ints {
+		fmt.Println(v)
+	}
+}
 
-//找出相同字符串 字典序+快排
-
-// 分治策略 的快速排序 排序数字
 func quick_sort_for_number(ints []int, low int, high int) {
 	i, j := low, high
 	if i >= j {

@@ -1,0 +1,14 @@
+g[00018]:    -> enter:main.C
+g[00018]:        -> enter:main.D
+g[00001]:    -> enter:main.main
+g[00001]:        -> enter:main.C
+g[00001]:            -> enter:main.D
+g[00001]:                -> enter:main.E
+g[00018]:            -> enter:main.E
+g[00018]:            <- exit :main.E
+g[00018]:        <- exit :main.D
+g[00018]:    <- exit :main.C
+g[00001]:                <- exit :main.E
+g[00001]:            <- exit :main.D
+g[00001]:        <- exit :main.C
+g[00001]:    <- exit :main.main

@@ -24,18 +24,17 @@ func is_circle(head *Node) *Node {
 }
 
 func double_pointer(head *Node) *Node {
-	fast := head
-	slow := head
-	for fast != nil {
-		fast = fast.Next.Next
+	slow, fast := head, head
+
+	for fast.Next != nil {
 		slow = slow.Next
-		if fast == slow {
-			tmp := head
-			for tmp != fast {
-				fast = fast.Next
-				tmp = tmp.Next
+		fast = fast.Next.Next
+		if slow == fast {
+			for head != slow {
+				head = head.Next
+				slow = slow.Next
 			}
-			return fast
+			return slow
 		}
 	}
 	return nil
