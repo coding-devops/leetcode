@@ -40,15 +40,18 @@ import (
 //
 
 func main() {
-	ints := []int{7, 212312, 32, 4, 5, 6}
+	ints := []int{1, 1, 1, 1, 0}
 	quick_sort_for_number(ints, 0, len(ints)-1) // 0，5
 	for _, v := range ints {
 		fmt.Println(v)
 	}
+
 }
 
 func quick_sort_for_number(ints []int, low int, high int) {
+
 	i, j := low, high
+
 	if i >= j {
 		return
 	}
@@ -74,6 +77,8 @@ func quick_sort_for_number(ints []int, low int, high int) {
 		}
 	}
 	ints[i] = tmp
+
 	quick_sort_for_number(ints, low, i-1)
 	quick_sort_for_number(ints, i+1, high)
+
 }

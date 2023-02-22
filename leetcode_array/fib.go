@@ -4,10 +4,10 @@ import "fmt"
 
 //斐波那契数列 递归算法
 
-//func main() {
-//	//fmt.Println(fib(5)) // 输出第n位斐波那契数
-//	print_n_fib(8) //输出前n位斐波那契数
-//}
+func main() {
+	//fmt.Println(fib(5)) // 输出第n位斐波那契数
+	print_n_fib(8) //输出前n位斐波那契数
+}
 
 func print_n_fib(n int) {
 
