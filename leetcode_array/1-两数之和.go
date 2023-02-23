@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	nums := []int{1, 2, 4, 5, 7} // target = 7
-	resultArray := twoSum(nums, 7)
+	resultArray := twoSumWithO1(nums, 7)
 	fmt.Println(resultArray[0], resultArray[1])
 }
 
