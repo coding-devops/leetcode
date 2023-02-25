@@ -1,11 +1,7 @@
 package main
 
-import "fmt"
-
 func main() {
-	nums := []int{1, 2, 4, 5, 7} // target = 7
-	resultArray := twoSumWithO1(nums, 7)
-	fmt.Println(resultArray[0], resultArray[1])
+	generateMatrix(3)
 }
 
 // 时间复杂度 = O(n²)
@@ -36,4 +32,40 @@ func twoSumWithO1(nums []int, target int) []int {
 		}
 	}
 	return nil
+}
+func generateMatrix(n int) [][]int {
+
+	nums := make([][]int, n)
+	for i := 0; i < len(nums); i++ {
+		nums[i] = make([]int, n)
+	}
+	currentNum := 1
+	final := n * n
+	left, right := 0, n-1
+	top, button := 0, n-1
+
+	for currentNum <= final {
+		// 纵坐标不变，横坐标移动
+		for i := left; i <= right; i++ {
+			nums[top][i] = currentNum
+			currentNum++
+		}
+		top++
+		for i := top; i <= button; i++ {
+			nums[i][right] = currentNum
+			currentNum++
+		}
+		right--
+		for i := right; i >= left; i-- {
+			nums[button][i] = currentNum
+			currentNum++
+		}
+		button--
+		for i := button; i >= top; i-- {
+			nums[i][left] = currentNum
+			currentNum++
+		}
+		left++
+	}
+	return nums
 }
